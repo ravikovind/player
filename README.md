@@ -1,12 +1,14 @@
 # player
 
 PlayerX.
+- [Download APK](app-arm64-v8a-release.apk)
 
 # Demo 
 - [Watch](https://drive.google.com/file/d/1IFjkz-rWozvOAjC1J5Ha-swpKmp9zeCM/view?usp=sharing)
 # Assignment Problems Completed
-- Slider Volume
-![](Demo/Screenshot_2021-05-09-17-24-31-54.png)
+- Build a simple Flutter app to play a video in fullscreen landscape mode with a slider bar to control the volume in the video.
+- Stream the users devices front camera feed (if exists) in a small box above the video player on the bottom right corner of the screen.
+- Build persistent firebase authentication.
 
 ## Getting Started
 
