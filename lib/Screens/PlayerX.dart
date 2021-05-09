@@ -49,6 +49,7 @@ class _PlayerXState extends State<PlayerX> {
           },
         ),
         betterPlayerDataSource: betterPlayerDataSource);
+    setState(() {});
   }
 
   @override
@@ -70,24 +71,23 @@ class _PlayerXState extends State<PlayerX> {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          Stack(
-            children: [
-              _betterPlayerController == null
-                  ? Center(child: CircularProgressIndicator())
-                  : AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: BetterPlayer(
-                        controller: _betterPlayerController,
+          Container(
+            child: Stack(
+              children: [
+                _betterPlayerController == null
+                    ? Center(child: CircularProgressIndicator())
+                    : AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: BetterPlayer(
+                          controller: _betterPlayerController,
+                        ),
                       ),
-                    ),
-              _controller.value.isInitialized
-                  ? Positioned(
-                      width: 84.0,
-                      height: 84.0,
-                      right: 0.0,
-                      bottom: 0.0,
-                      child: Transform.rotate(
-                        angle: 0,
+                _controller.value.isInitialized
+                    ? Positioned(
+                        width: 84.0,
+                        height: 84.0,
+                        right: 0.0,
+                        bottom: 0.0,
                         child: AspectRatio(
                           aspectRatio: 1 / 1,
                           child: Container(
@@ -103,10 +103,10 @@ class _PlayerXState extends State<PlayerX> {
                               ),
                               child: CameraPreview(_controller)),
                         ),
-                      ),
-                    )
-                  : Container(),
-            ],
+                      )
+                    : Container(),
+              ],
+            ),
           ),
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
