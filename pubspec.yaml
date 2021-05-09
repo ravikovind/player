@@ -33,6 +33,7 @@ dependencies:
   firebase_auth:
   google_sign_in:
   firebase_core:
+  better_player: 
 
 dev_dependencies:
   flutter_test:

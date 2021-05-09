@@ -1,8 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:player/Screens/PlayerHelper.dart';
-import 'package:video_player/video_player.dart';
+import 'package:player/Screens/PlayerOff.dart';
 
 class MyHomePage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -35,10 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                return PlayerHelper(
+                return PlayerX(
                   cameras: widget.cameras,
-                  controller:
-                      VideoPlayerController.network(_list[index].toString()),
+                  url: _list[index].toString(),
                 );
               }));
             },
