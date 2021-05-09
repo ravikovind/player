@@ -36,8 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
                 return PlayerHelper(
-                    cameras: widget.cameras,
-                    controller: VideoPlayerController.network(_list[index]));
+                  cameras: widget.cameras,
+                  controller:
+                      VideoPlayerController.network(_list[index].toString()),
+                );
               }));
             },
           );
