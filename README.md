@@ -1,6 +1,6 @@
 # player
 
-A new Flutter project.
+PlayerX.
 
 # Demo 
 - [Watch](https://drive.google.com/file/d/1IFjkz-rWozvOAjC1J5Ha-swpKmp9zeCM/view?usp=sharing)
