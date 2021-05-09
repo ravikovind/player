@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:player/Screens/LogInPage.dart';
 import 'package:player/Screens/MyHomePage.dart';
 
 List<CameraDescription> cameras;
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
                   cameras: cameras,
                 );
               } else {
-                return MyHomePage(
+                return LogInPage(
                   cameras: cameras,
                 );
               }

@@ -7,7 +7,8 @@ class PlayerX extends StatefulWidget {
   final List<CameraDescription> cameras;
   final String url;
 
-  const PlayerX({Key key, @required this.cameras, @required this.url}) : super(key: key);
+  const PlayerX({Key key, @required this.cameras, @required this.url})
+      : super(key: key);
 
   @override
   _PlayerXState createState() => _PlayerXState();
@@ -35,15 +36,18 @@ class _PlayerXState extends State<PlayerX> {
       setState(() {});
     });
 
-    BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
-        BetterPlayerDataSourceType.network,
-        widget.url);
+    BetterPlayerDataSource betterPlayerDataSource =
+        BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.url);
     _betterPlayerController = BetterPlayerController(
         BetterPlayerConfiguration(
-            allowedScreenSleep: true,
-            autoPlay: false,
-            looping: true,
-            handleLifecycle: false),
+          looping: true,
+          showPlaceholderUntilPlay: false,
+          errorBuilder: (context, errorMessage) {
+            return Center(
+              child: Container(child: Text("Something went wrong!!")),
+            );
+          },
+        ),
         betterPlayerDataSource: betterPlayerDataSource);
   }
 
@@ -126,15 +130,4 @@ class _PlayerXState extends State<PlayerX> {
       ),
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: AspectRatio(
-  //       aspectRatio: 16 / 9,
-  //       child: BetterPlayer(
-  //         controller: _betterPlayerController,
-  //       ),
-  //     ),
-  //   );
-  // }
 }

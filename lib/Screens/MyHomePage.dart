@@ -1,7 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:player/Screens/PlayerOff.dart';
+import 'package:player/Methods/AuthMethods.dart';
+import 'package:player/Screens/PlayerX.dart';
 
 class MyHomePage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -14,10 +15,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<String> _list = [
     "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4",
-    "https://vod-progressive.akamaized.net/exp=1620556503~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F688%2F17%2F428442047%2F1859369268.mp4~hmac=81bb38177e364eedd1ba0f048f19565c82900479a7738432a8b6ef2b1fee7add/vimeo-prod-skyfire-std-us/01/688/17/428442047/1859369268.mp4?filename=production+ID%3A4629650.mp4",
-    "https://vod-progressive.akamaized.net/exp=1620545741~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F647%2F20%2F503235672%2F2298754321.mp4~hmac=c804b3298b28bdd6c37bf0988cc374e4766582cce0112d23aa2e5dd456b09f14/vimeo-prod-skyfire-std-us/01/647/20/503235672/2298754321.mp4?filename=pexels-mikhail-nilov-6563976.mp4",
-    "https://vod-progressive.akamaized.net/exp=1620556577~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1620%2F19%2F483102170%2F2162828484.mp4~hmac=ea8a71d70bf1851432717b71014e8fab3a2d3e929606d47a32fade7ba7bbfbd0/vimeo-prod-skyfire-std-us/01/1620/19/483102170/2162828484.mp4?filename=pexels-jack-sparrow-5977450.mp4"
+    "https://vod-progressive.akamaized.net/exp=1620579828~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F933%2F18%2F454669949%2F2004067596.mp4~hmac=217129742db0ad044ea6f1f1621936d17ba6dc7409981f033f128367d6db1cdc/vimeo-prod-skyfire-std-us/01/933/18/454669949/2004067596.mp4?filename=pexels-taryn-elliott-5271945.mp4",
+    "https://vod-progressive.akamaized.net/exp=1620579778~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F3253%2F17%2F441265011%2F1930380741.mp4~hmac=940bd8bfa85f2ecb363e3bf1e2639e59d38d4b7ee293c7f017e35189f0f67c5f/vimeo-prod-skyfire-std-us/01/3253/17/441265011/1930380741.mp4?filename=production+ID%3A4942181.mp4",
+    "https://vod-progressive.akamaized.net/exp=1620579251~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F402%2F14%2F352012012%2F1427930346.mp4~hmac=b3d4b2886e5bf4d120813cf9bd0d2873ce447bb461415e5545da1a6961278c04/vimeo-prod-skyfire-std-us/01/402/14/352012012/1427930346.mp4?filename=Pexels+Videos+2759477.mp4",
   ];
+
+  AuthMethods authMethods = AuthMethods();
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +28,27 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text("Player"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                authMethods.signOut().whenComplete(() {
+                  setState(() {});
+                });
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: ListView.builder(
         itemCount: _list.length,
         itemBuilder: (BuildContext context, int index) {
           return MaterialButton(
-            child: Text("video  " + index.toString()),
+            child: Text(" Demo video  " + index.toString()),
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
                 return PlayerX(
                   cameras: widget.cameras,
-                  url: _list[index].toString(),
+                  url: _list[index],
                 );
               }));
             },
@@ -44,27 +56,5 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
-
-    //   body: Center(
-    //     child: MaterialButton(
-    //       child: Icon(
-    //         Icons.play_arrow_rounded,
-    //         size: 80,
-    //       ),
-    //       onPressed: () {
-    //         Navigator.push(
-    //             context,
-    //             MaterialPageRoute(
-    //                 fullscreenDialog: true,
-    //                 builder: (BuildContext context) {
-    //                   return PlayerHelper(
-    //                       cameras: widget.cameras,
-    //                       controller: VideoPlayerController.network(
-    //                           "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4"));
-    //                 }));
-    //       },
-    //     ),
-    //   ),
-    // );
   }
 }
