@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:better_player/better_player.dart';
@@ -101,7 +103,8 @@ class _PlayerXState extends State<PlayerX> {
                                   width: 1.0,
                                 ),
                               ),
-                              child: CameraPreview(_controller)),
+                              child: Transform.rotate(angle: -pi/2,
+                              child: CameraPreview(_controller))),
                         ),
                       )
                     : Container(),
