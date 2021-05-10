@@ -1,7 +1,7 @@
 # player
 
 PlayerX.
-- [Download APK](app-arm64-v8a-release.apk)
+- [Download APK](https://drive.google.com/file/d/1IWrbPDaAkQNmBB3ssXKBSGASJwqiu4dZ/view)
 
 # Demo 
 - [Watch](https://drive.google.com/file/d/1aaP0KGwx7n702rEyjI3ONHH6FNTNCefz/view)
